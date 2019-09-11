@@ -1,0 +1,7 @@
+<p>test</p>
+<ul>
+  <li *ngFor="let to of todo" (click)="toggle(to)" [class.fertig]="to.done">
+  {{ to.label }}
+  </li>
+</ul>
+<input [(ngModel)]="newTodo.label"> <button (click)="save()"> save </button>
