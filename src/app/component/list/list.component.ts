@@ -7,13 +7,15 @@ import {Todo} from '../model/Todo';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  todo: Todo[] = [];
+  suchinhalt: string;
+  private _todo: Todo[] = [];
   newTodo: Todo;
   constructor() {
-    this.todo.push(new Todo('Rasen mähen'));
-    this.todo.push(new Todo('Bier trinken'));
-    this.todo.push(new Todo('Drogen verkaufen'));
+    this._todo.push(new Todo('Rasen mähen'));
+    this._todo.push(new Todo('Bier trinken'));
+    this._todo.push(new Todo('Drogen verkaufen'));
     this.newTodo = new Todo('');
+    this.suchinhalt = '';
   }
 
   ngOnInit() {
@@ -23,9 +25,16 @@ export class ListComponent implements OnInit {
      todo.done = !todo.done;
   }
 
-  save(todo: Todo) {
-this.todo.push(this.newTodo);
-this.newTodo = new Todo('');
+  save() {
+    this._todo.push(this.newTodo);
+    this.newTodo = new Todo('');
 
+  }
+  delete(todosos: Todo): void {
+    this._todo = this._todo.filter(t => t !== todosos);
+  }
+  get Todos () {
+    this.suchinhalt = this.suchinhalt.toLowerCase();
+    return this._todo.filter(a => a.label.toLowerCase().includes(this.suchinhalt));
   }
 }

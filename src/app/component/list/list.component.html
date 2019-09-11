@@ -1,7 +1,9 @@
-<p>test</p>
+<input [(ngModel)]="suchinhalt">
 <ul>
-  <li *ngFor="let to of todo" (click)="toggle(to)" [class.fertig]="to.done">
-  {{ to.label }}
+  <li *ngFor="let to of Todos" (click)="toggle(to) " [class.fertig]="to.done">
+    {{ to.label }}    <button (click)="delete(to)"> delete </button>
   </li>
 </ul>
-<input [(ngModel)]="newTodo.label"> <button (click)="save()"> save </button>
+<input [(ngModel)]="newTodo.label">
+<button (click)="save()"> save </button>
+
