@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from '../model/Todo';
+import {Categories} from '../model/Categories';
 
 @Component({
   selector: 'app-list',
@@ -9,6 +10,7 @@ import {Todo} from '../model/Todo';
 export class ListComponent implements OnInit {
   suchinhalt: string;
   private _todo: Todo[] = [];
+  private _categories: Categories[] = [];
   newTodo: Todo;
   constructor() {
     this._todo.push(new Todo('Rasen mähen'));
@@ -16,6 +18,9 @@ export class ListComponent implements OnInit {
     this._todo.push(new Todo('Drogen verkaufen'));
     this.newTodo = new Todo('');
     this.suchinhalt = '';
+    this._categories.push(new Categories('Arbeit'));
+    this._categories.push(new Categories('Sport'));
+    this._categories.push(new Categories('Chillen'));
   }
 
   ngOnInit() {
@@ -37,4 +42,10 @@ export class ListComponent implements OnInit {
     this.suchinhalt = this.suchinhalt.toLowerCase();
     return this._todo.filter(a => a.label.toLowerCase().includes(this.suchinhalt));
   }
+
+ /* get categories () {
+    this._categories = this._categories.toLowerCase();
+    return this._categories.filter(a => a.category.toLowerCase().includes(this._categories));
+  }
+  */
 }
