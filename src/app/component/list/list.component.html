@@ -1,9 +1,45 @@
-<input [(ngModel)]="suchinhalt">
-<ul>
-  <li *ngFor="let to of Todos" (click)="toggle(to) " [class.fertig]="to.done">
-    {{ to.label }}    <button (click)="delete(to)"> delete </button>
-  </li>
-</ul>
-<input [(ngModel)]="newTodo.label">
-<button (click)="save()"> save </button>
+<table class="table table-dark">
+  <input [(ngModel)]="suchinhalt">
+  <button class="btn btn-danger">
+    <i class="material-icons">
+      search
+    </i>
+  </button>
+  <thead>
+    <tr>
+      <th>
+        "Bezeichnung"
+      </th>
+      <th>
+        "Löschen"
+      </th>
+    </tr>
+
+  </thead>
+  <tbody >
+    <tr *ngFor="let to of Todos" (click)="toggle(to) " [class.fertig]="to.done">
+      <td>
+        {{ to.label }}
+      </td>
+      <td>
+        <button (click)="delete(to)" class="btn btn-danger">
+          <i class="material-icons">
+            delete
+          </i>
+        </button>
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  </tbody>
+  <input [(ngModel)]="newTodo.label">
+  <button (click)="save()" class="btn btn-danger">
+    <i class="material-icons">
+      save
+    </i>
+  </button>
+</table>
+
+
 
